@@ -5,6 +5,9 @@ Repo to reference important scripts, commands, resources, and links for referenc
 
 This repo is structured in the same manner as the OffSec PEN-200 course and will include content from them as well as valuable external resources.
 
+<details>
+  <summary>Information Gathering</summary>
+
 # **Passive Information Gathering**
 
 ## **Links**
@@ -73,3 +76,8 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
   ### SMB Enumeration
 
   - Using nmap: ```nmap -v -p 139,445 -oG smb.txt 192.168.50.1-254``` >>> ```cat smb.txt```
+  - NetBIOS info: ```sudo nbtscan -r <CIDR range>```
+  - nmap NSE for SMB: ```ls -1 /usr/share/nmap/scripts/smb*```
+  - Net View to list remote shares: ```net view \\<share> /all```
+ 
+  </details>
