@@ -82,7 +82,12 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 
 ### SMTP Enumeration
 
-- Using netcat to verify smtp users: ```nc -nv 192.168.50.8 25```
+- Using nmap to find hosts with smtp: ```nmap -v -p 25 <IP.1-254>```
+- Using netcat to verify smtp usage: ```nc -nv <IP> 25```
   - To see if legit root user: ```VRFY root```
   - To demonstrate known bad user: ```VRFY idontexist```
+ 
+### SNMP Enumeration
+
+- 
 
