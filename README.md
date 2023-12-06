@@ -89,5 +89,10 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
  
 ### SNMP Enumeration
 
-- 
+- Using nmap to find snmp hosts: ```sudo nmap -sU --open -p 161 <IP.1-254> -oG open-snmp.txt```
+- Using snmpwalk to enumerate the MIB tree: ```snmpwalk -c public -v1 -t 10 <host IP>```
+- Using snmpwalk to enumerate Windows users: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.4.1.77.1.2.25```
+- Using snmpwalk to enumerate Windows services: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.2.1.25.4.2.1.2```
+- Using snmpwalk to enumerate Windows installed software: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.2.1.25.6.3.1.2```
+- Using snmpwalk to enumerate local open ports: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.2.1.6.13.1.3```
 
