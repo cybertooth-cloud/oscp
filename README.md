@@ -25,6 +25,8 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 
 ## **Links**
 
+- None yet!
+
 ## **Commands/Scripts**
 
 ### DNS Enumeration
