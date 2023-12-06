@@ -49,6 +49,22 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
   - Basic Netcat UDP scan: ```nc -nv -u -z -w 1 <IP> <port range>```
 - nmap
   - Basic nmap scan (hits 1000 most popular ports): ```nmap <IP>```
-  - Stealth scan: ```sudo nmap -sS <IP>```
+  - Stealth SYN scan: ```sudo nmap -sS <IP>```
+  - TCP Connect scan (good for proxies): ```nmap -sT <IP>```
+  - UDP SYN Scan (more complete picture): ```sudo nmap -sU -sS <IP>```
+  - Basic Network sweep: ```nmap -sn <IP.1-253>```
+  - Verbose Network sweep with filtered output:
+    - ```nmap -v -sn <IP.1-253> -oG ping-sweep.txt```
+    - then ```grep Up ping-sweep.txt | cut -d " " -f 2```
+  - Specific port/service scan:
+    - ```nmap -p <port number> <IP.1-253> -oG web-sweep.txt```
+    - then ```grep open web-sweep.txt | cut -d" " -f2```
+  - Top XX port scan on multiple IPs: ```nmap -sT -A --top-ports=XX <IP.1-253> -oG top-port-sweep.txt```
+    - then ```grep open top-port-sweep.txt | cut -d" " -f2```
+  - OS Fingerprint Scan: ```sudo nmap -O <host IP> --osscan-guess```
+  - Banner grabbing/Service enum: ```nmap -sT -A <host IP>```
+  - NSE for http-headers: ```nmap --script http-headers <host IP>```
+- _On Windows..._
+  - Basic Single Port Scan: ```Test-NetConnection -Port <port number> <host IP>```
+  - Wider port scan: ```1..1024 | % {echo ((New-Object Net.Sockets.TcpClient).Connect("<host IP>", $_)) "TCP port $_ is open"} 2>$null```
   - 
-- 
