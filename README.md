@@ -18,5 +18,5 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 
 ### WhoIs Enumeration
 
-- Basic whois: ''' whois _domain URL_ -h _whois host IP_ '''
-- Reverse whois: ''' whois _NS IP_ -h _whois host IP_ '''
+- Basic whois: ``` whois _domain URL_ -h _whois host IP_ ```
+- Reverse whois: ``` whois _NS IP_ -h _whois host IP_ ```
