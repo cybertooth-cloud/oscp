@@ -70,7 +70,7 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
   - Basic Single Port Scan: ```Test-NetConnection -Port <port number> <host IP>```
   - Wider port scan: ```1..1024 | % {echo ((New-Object Net.Sockets.TcpClient).Connect("<host IP>", $_)) "TCP port $_ is open"} 2>$null```
 
-  ### SMB Enumeration
+### SMB Enumeration
 
 - Using nmap: ```nmap -v -p 139,445 -oG smb.txt 192.168.50.1-254``` >>> ```cat smb.txt```
 - NetBIOS info: ```sudo nbtscan -r <CIDR range>```
