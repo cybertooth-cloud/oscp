@@ -72,7 +72,17 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 
   ### SMB Enumeration
 
-  - Using nmap: ```nmap -v -p 139,445 -oG smb.txt 192.168.50.1-254``` >>> ```cat smb.txt```
-  - NetBIOS info: ```sudo nbtscan -r <CIDR range>```
-  - nmap NSE for SMB: ```ls -1 /usr/share/nmap/scripts/smb*```
-  - Net View to list remote shares (on Windows): ```net view \\<share> /all```
+- Using nmap: ```nmap -v -p 139,445 -oG smb.txt 192.168.50.1-254``` >>> ```cat smb.txt```
+- NetBIOS info: ```sudo nbtscan -r <CIDR range>```
+- nmap NSE for SMB: ```ls -1 /usr/share/nmap/scripts/smb*```
+- Net View to list remote shares (on Windows): ```net view \\<share> /all```
+- enum4linux:
+  - User listing: ```enum4linux -U <IP>```
+  - SMB share info: ```enum4linux -S <IP>```
+
+### SMTP Enumeration
+
+- Using netcat to verify smtp users: ```nc -nv 192.168.50.8 25```
+  - To see if legit root user: ```VRFY root```
+  - To demonstrate known bad user: ```VRFY idontexist```
+
