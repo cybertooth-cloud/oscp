@@ -1,4 +1,4 @@
-# oscp
+# OSCP
 OSCP references, commands, resources
 
 Repo to reference important scripts, commands, resources, and links for reference during study for the OSCP.
