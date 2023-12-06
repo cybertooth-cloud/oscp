@@ -43,3 +43,12 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
   - More specific host lookup: ```nslookup -type=TXT <host FQDN> <DNS server IP>```
 
 ### TCP/UDP Port Scanning
+
+- Netcat
+  - Basic Netcat TCP scan: ```nc -nvv -w 1 -z <IP> <port range>```
+  - Basic Netcat UDP scan: ```nc -nv -u -z -w 1 <IP> <port range>```
+- nmap
+  - Basic nmap scan (hits 1000 most popular ports): ```nmap <IP>```
+  - Stealth scan: ```sudo nmap -sS <IP>```
+  - 
+- 
