@@ -26,3 +26,20 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 ## **Links**
 
 ## **Commands/Scripts**
+
+### DNS Enumeration
+
+- Basic host: ```host <domain URL> ```'
+- Record specific host: ```host -t <A, AAA, MX, TXT> <domain URL>```
+- Automate forward DNS lookup...
+  1. Build small list: ```cat list.txt``` >> append ```www, ftp, mail, owa, proxy router``` to the list.txt file
+  2. ```for ip in $(cat list.txt); do host $ip.<domain URL>; done```
+  3. Brute force reverse DNS: ```for ip in $(seq 200 254); do host <first 3 octets in CIDR>.$ip; done | grep -v "not found"```
+- DNSRecon standard scan: ```dnsrecon -d <domain URL> -t std```
+- DNSRecon brute force using same list.txt: ```dnsrecon -d <domain URL> -D ~/list.txt -t brt```
+- DNS Enum standard scan: ```dnsenum <domain URL>```
+- _On Windows..._
+  - Basic host enumeration: ```nslookup <host FQDN>```
+  - More specific host lookup: ```nslookup -type=TXT <host FQDN> <DNS server IP>```
+
+### TCP/UDP Port Scanning
