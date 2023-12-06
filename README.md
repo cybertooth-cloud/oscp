@@ -67,4 +67,4 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - _On Windows..._
   - Basic Single Port Scan: ```Test-NetConnection -Port <port number> <host IP>```
   - Wider port scan: ```1..1024 | % {echo ((New-Object Net.Sockets.TcpClient).Connect("<host IP>", $_)) "TCP port $_ is open"} 2>$null```
-  - 
+  
