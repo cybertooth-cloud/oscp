@@ -95,4 +95,6 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - Using snmpwalk to enumerate Windows services: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.2.1.25.4.2.1.2```
 - Using snmpwalk to enumerate Windows installed software: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.2.1.25.6.3.1.2```
 - Using snmpwalk to enumerate local open ports: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.2.1.6.13.1.3```
+- Using snmpwalk to translate hex to ASCII: ```snmpwalk -c public -v1 -t 10 <host IP> -Oa```
 
+## Vulnerability Scanning
