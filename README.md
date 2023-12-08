@@ -100,3 +100,6 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 ## Vulnerability Scanning
 
 - Initialize Nessus: ```sudo systemctl start nessusd.service```
+- nmap NSE auto-usage for category: ```sudo nmap -sV -p <port> --script "vuln" <host IP>```
+- updating NSE with external scripts: ```sudo cp /home/kali/Downloads/<filename>.nse /usr/share/nmap/scripts/<filename>.nse```
+  - then ```sudo nmap --script-updatedb```
