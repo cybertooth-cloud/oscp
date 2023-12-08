@@ -98,3 +98,5 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - Using snmpwalk to translate hex to ASCII: ```snmpwalk -c public -v1 -t 10 <host IP> -Oa```
 
 ## Vulnerability Scanning
+
+- Initialize Nessus: ```sudo systemctl start nessusd.service```
