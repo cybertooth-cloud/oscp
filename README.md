@@ -97,9 +97,17 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - Using snmpwalk to enumerate local open ports: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.2.1.6.13.1.3```
 - Using snmpwalk to translate hex to ASCII: ```snmpwalk -c public -v1 -t 10 <host IP> -Oa```
 
-## Vulnerability Scanning
+# Vulnerability Scanning
 
 - Initialize Nessus: ```sudo systemctl start nessusd.service```
 - nmap NSE auto-usage for category: ```sudo nmap -sV -p <port> --script "vuln" <host IP>```
 - updating NSE with external scripts: ```sudo cp /home/kali/Downloads/<filename>.nse /usr/share/nmap/scripts/<filename>.nse```
   - then ```sudo nmap --script-updatedb```
+
+# Web Application Assessment and Enumeration
+
+- Using nmap to discover web server version: ```sudo nmap -p <port number>  -sV <host IP>```
+- Running Nmap NSE http enumeration script against the target: ```sudo nmap -p <port number> --script=http-enum <host IP>```
+- Passively fetch a wealth of information about the application technology stack via Wappalyzer: https://www.wappalyzer.com/lookup/
+- Using Gobuster to enumerate files and directories: ```gobuster dir -u <host IP> -w /usr/share/wordlists/dirb/common.txt -t 5```
+- Launching Burp: ```burpsuite```
