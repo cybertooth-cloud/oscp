@@ -111,3 +111,4 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - Passively fetch a wealth of information about the application technology stack via Wappalyzer: https://www.wappalyzer.com/lookup/
 - Using Gobuster to enumerate files and directories: ```gobuster dir -u <host IP> -w /usr/share/wordlists/dirb/common.txt -t 5```
 - Launching Burp: ```burpsuite```
+- 
