@@ -111,4 +111,8 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - Passively fetch a wealth of information about the application technology stack via Wappalyzer: https://www.wappalyzer.com/lookup/
 - Using Gobuster to enumerate files and directories: ```gobuster dir -u <host IP> -w /usr/share/wordlists/dirb/common.txt -t 5```
 - Launching Burp: ```burpsuite```
+- Grabbing the robots.txt for sitemap enum: ```curl <site URL>/robots.txt```
+- Brute forcing API paths with gobuster: ```gobuster dir -u http://<host IP>:5002 -w /usr/share/wordlists/dirb/big.txt -p pattern```
+- Using curl to inspect API: ```curl -i http://<host IP>:5002/<API path>```
+- Using curl to deeper inspect API using found data: ```gobuster dir -u http://<host IP>:5002/<API path>/<user or data>/ -w /usr/share/wordlists/dirb/small.txt```
 - 
