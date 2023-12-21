@@ -112,7 +112,9 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - Using Gobuster to enumerate files and directories: ```gobuster dir -u <host IP> -w /usr/share/wordlists/dirb/common.txt -t 5```
 - Launching Burp: ```burpsuite```
 - Grabbing the robots.txt for sitemap enum: ```curl <site URL>/robots.txt```
-- Brute forcing API paths with gobuster: ```gobuster dir -u http://<host IP>:5002 -w /usr/share/wordlists/dirb/big.txt -p pattern```
+- Brute forcing API paths with gobuster:
+  - Create the 'pattern' file with the {GOBUSTER} placeholder: ```mousepad pattern``` with ```{GOBUSTER}/v1 {GOBUSTER}/v2``` as the contents on individual lines
+  - ```gobuster dir -u http://<host IP>:5002 -w /usr/share/wordlists/dirb/big.txt -p pattern```
 - Using curl to inspect API: ```curl -i http://<host IP>:5002/<API path>```
 - Using curl to deeper inspect API using found data: ```gobuster dir -u http://<host IP>:5002/<API path>/<user or data>/ -w /usr/share/wordlists/dirb/small.txt```
 - Crafting a POST request against a login API: ```curl -d '{"password":"fake","username":"admin"}' -H 'Content-Type: application/json'  http://<host IP>:5002/<API path>/login```
