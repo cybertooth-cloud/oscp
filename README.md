@@ -5,6 +5,8 @@ Repo to reference important scripts, commands, resources, and links for referenc
 
 This repo is structured in the same manner as the OffSec PEN-200 course and will include content from them as well as valuable external resources.
 
+- Transfer file from remote desktop session to local host: ```rdesktop -u <username> -p <password> <IP> -r disk:tmp=/tmp```
+
 # **Passive Information Gathering**
 
 ## **Links**
