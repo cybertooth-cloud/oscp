@@ -5,7 +5,8 @@ Repo to reference important scripts, commands, resources, and links for referenc
 
 This repo is structured in the same manner as the OffSec PEN-200 course and will include content from them as well as valuable external resources.
 
-- Transfer file from remote desktop session to local host: ```rdesktop -u <username> -p <password> <IP> -r disk:tmp=/tmp```
+- Transfer file from rdesktop session to local host: ```rdesktop -u <username> -p <password> <IP> -r disk:tmp=/tmp```
+- Transfer file from xfreerdp session to local host: ```xfreerdp /u:<username> /p:<password> /v:<IP>:3389 /drive:/home/jbregler/offsec,KALI_SHARE```
 - Read a file during ftp: ```get <file name> -```
 
 # **Passive Information Gathering**
